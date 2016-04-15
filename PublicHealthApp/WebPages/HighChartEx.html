@@ -1,0 +1,113 @@
+﻿<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<title>Highcharts Example</title>
+
+		<script src="../../Scripts/jquery-1.10.2.min.js"></script>
+        <script src="../../Scripts/highcharts.js"></script>
+
+        <script type="text/javascript">
+            $(function () {
+                $('#container').highcharts({
+                    chart: {
+                        zoomType: 'xy'
+                    },
+                    title: {
+                        text: 'Vaccine Preventable Diseases'
+                    },
+                    subtitle: {
+                        text: 'Graphing proof of concept'
+                    },
+                    xAxis: [{
+                        categories: ['Hepatitis A', 'Hepatitis B', 'Hib', 'HPV', 'Influenza', 'Meningococcal', 'MMR', 'Pneumococcal (PCV)', 'Pneumococcal (PPSV)', 'Polio', 'Rotavirus', 'DTap/Td/Tdap', 'Varicella (chickenpox)', 'Zoster'],
+                        crosshair: true
+                    }],
+                    yAxis: [{ // Primary yAxis
+                        labels: {
+                            format: '{value}',
+                            style: {
+                                color: Highcharts.getOptions().colors[1]
+                            }
+                        },
+                        title: {
+                            text: '',
+                            style: {
+                                color: Highcharts.getOptions().colors[1]
+                            }
+                        }
+                    },
+
+                    { // Secondary yAxis
+                        title: {
+                            text: 'Population Counts',
+                            style: {
+                                color: Highcharts.getOptions().colors[0]
+                            }
+                        },
+                        labels: {
+                            format: '{value}',
+                            style: {
+                                color: Highcharts.getOptions().colors[0]
+                            }
+                        },
+                        opposite: true
+                    },
+
+
+                     { // Primary yAxis
+                         labels: {
+                             format: '{value}',
+                             style: {
+                                 color: Highcharts.getOptions().colors[1]
+                             }
+                         },
+                         title: {
+                             text: '# Occurences',
+                             style: {
+                                 color: Highcharts.getOptions().colors[1]
+                             }
+                         }
+                     }
+
+                    ],
+                    tooltip: {
+                        shared: true
+                    },
+                    legend: {
+                        layout: 'vertical',
+                        align: 'left',
+                        x: 120,
+                        verticalAlign: 'top',
+                        y: 100,
+                        floating: true,
+                        backgroundColor: (Highcharts.theme && Highcharts.theme.legendBackgroundColor) || '#FFFFFF'
+                    },
+                    series: [{
+                        name: 'Adult',
+                        type: 'column',
+                        yAxis: 1,
+                        data: [49.9, 71.5, 106.4, 129.2, 144.0, 176.0, 135.6, 148.5, 216.4, 194.1, 95.6, 54.4],
+
+                    }, {
+                        name: '# Occurences',
+                        type: 'spline',
+                        data: [7, 6, 9, 14, 18, 21, 25, 26, 23, 18, 13, 9],
+                    },
+		            {
+		                name: 'Children',
+		                type: 'column',
+		                yAxis: 1,
+		                data: [29.2, 51.0, 66.3, 109.2, 74.0, 76.0, 115.6, 128.5, 186.4, 154.1, 75.6, 84.4],
+		            }]
+                });
+            });
+		</script>
+	</head>
+	<body>
+
+        <div id="container" style="min-width: 310px; max-width: 800px; height: 400px; margin: 0 auto"></div>
+
+	</body>
+</html>
+
