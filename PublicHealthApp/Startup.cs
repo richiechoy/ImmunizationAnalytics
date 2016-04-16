@@ -1,5 +1,7 @@
 ﻿using Microsoft.Owin;
 using Owin;
+using PublicHealthApp.App_Start;
+
 
 [assembly: OwinStartupAttribute(typeof(PublicHealthApp.Startup))]
 namespace PublicHealthApp

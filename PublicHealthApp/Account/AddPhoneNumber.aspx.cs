@@ -8,6 +8,8 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using System.Threading.Tasks;
 using PublicHealthApp.Models;
+using PublicHealthApp.App_Start;
+
 
 namespace PublicHealthApp.Account
 {

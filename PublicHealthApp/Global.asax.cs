@@ -24,7 +24,6 @@ namespace PublicHealthApp
             //Database.SetInitializer(new VaccineDBInitializer());
             Database.SetInitializer<VaccinationContext>(null); // move this to the context constructor later
 
-            DBConfig.DummyDBOperations();
 
         }
     }

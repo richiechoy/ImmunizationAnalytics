@@ -8,7 +8,7 @@ using Microsoft.Owin;
 using Microsoft.Owin.Security;
 using PublicHealthApp.Models;
 
-namespace PublicHealthApp
+namespace PublicHealthApp.App_Start
 {
     public class EmailService : IIdentityMessageService
     {

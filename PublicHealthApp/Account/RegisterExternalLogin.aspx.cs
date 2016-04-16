@@ -5,6 +5,7 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using Owin;
 using PublicHealthApp.Models;
+using PublicHealthApp.App_Start;
 
 namespace PublicHealthApp.Account
 {

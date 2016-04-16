@@ -6,7 +6,8 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
-using PublicHealthApp.Models;
+using PublicHealthApp.App_Start;
+
 
 namespace PublicHealthApp.Models
 {

@@ -8,6 +8,8 @@ using System.Web.UI.WebControls;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using PublicHealthApp.Models;
+using PublicHealthApp.App_Start;
+
 
 namespace PublicHealthApp.Account
 {

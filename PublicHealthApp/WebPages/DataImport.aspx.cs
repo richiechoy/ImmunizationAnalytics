@@ -91,9 +91,12 @@ namespace PublicHealthApp.WebPages
                         patient.Race = rowValues["RACEETHK"];
                         patient.Gender = rowValues["SEX"];
 
-                        if (DataModel.GetPatient(patient.Id) == null)
+                        if (DataModel.GetItem(patient, patient.Id) == null)
+
+                        // if (DataModel.GetPatient(patient.Id) == null)
                         {
-                            DataModel.AddPatient(patient);
+                            //DataModel.AddPatient(patient);
+                            DataModel.AddItem(patient);
                             // get vaccinations
 
                             foreach (KeyValuePair<string, string> entry in targetVaccines)
@@ -156,7 +159,8 @@ namespace PublicHealthApp.WebPages
                 VaccineId = vaccineId,
                 PatientId = patientId
             };
-            DataModel.AddImmunization(immunization);
+            //DataModel.AddImmunization(immunization);
+            DataModel.AddItem(immunization);
         }
     }
 }

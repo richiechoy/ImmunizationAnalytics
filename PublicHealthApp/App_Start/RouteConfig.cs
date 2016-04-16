@@ -4,7 +4,7 @@ using System.Web;
 using System.Web.Routing;
 using Microsoft.AspNet.FriendlyUrls;
 
-namespace PublicHealthApp
+namespace PublicHealthApp.App_Start
 {
     public static class RouteConfig
     {

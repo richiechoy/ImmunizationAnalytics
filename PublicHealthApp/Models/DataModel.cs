@@ -33,152 +33,27 @@ namespace PublicHealthApp.Models
             conn.Close();
         }
 
-        public static bool AddImmunization(Immunization im)
+        public static bool AddItem<T>(T entityToCreate) where T : class
         {
-			
-                // Check unique key
-                //var v = db.Immunization.Find(im.Id);
-                //if (v == null)
-				db.Immunization.Add(im);
-				try
-				{
-					//db.SaveChanges();
-					return true;
-				}
-				catch (DbUpdateConcurrencyException) 
-				{
-					((IObjectContextAdapter)db).ObjectContext.Refresh(RefreshMode.ClientWins, db.Immunization);
-					//db.SaveChanges();
-				}
-                return false;
-            
+            db.Set<T>().Add(entityToCreate);
+            try
+            {
+                db.SaveChanges();
+                return true;
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                ((IObjectContextAdapter)db).ObjectContext.Refresh(RefreshMode.ClientWins, db.Vaccine);
+                db.SaveChanges();
+            }
+            return false;
         }
 
-		/*
-		public static bool DeleteImmunization(Immunization im)
-		{
-			using (var db = new VaccinationContext(new SQLiteConnection(DBpath)))
-			{
-				db.Immunization.Remove(im);
-				db.SaveChanges();
-				//db.People.RemoveRange(db.People.Where(x => State == "CA"));
-			}
-
-			return true;
-		}
-		*/
-
-		public static Immunization GetImmunization(int id)
-		{
-			
-                var query = from b in db.Immunization
-                            where b.rowid == id
-                            select b;
-				if (query != null && query.Count() > 0)
-				{
-					return query.ElementAt(0);
-				}
-				return null;
-			
-		}
-
-		public static bool AddPatient(Patient pat)
+        public static Object GetItem<T>(T entity, object key) where T : class
         {
-			
-				db.Patient.Add(pat);
-				try
-				{
-					//db.SaveChanges();
-					return true;
-				}
-				catch (DbUpdateConcurrencyException)
-				{
-					((IObjectContextAdapter)db).ObjectContext.Refresh(RefreshMode.ClientWins, db.Patient);
-					//db.SaveChanges();
-				}
-				return false;
-            
+            return db.Set<T>().Find(key);
         }
-
-		// gotta watch out for non-unique Id field (its not a unique rowid)
-		public static Patient GetPatient(string id)
-		{
-			
-                var query = from b in db.Patient
-                             where b.Id == id
-                             select b;
-				if (query != null && query.Count() > 0)
-				{
-					return query.First();
-				}
-				return null;
-			
-		}
-
-		public static bool AddVaccine(Vaccine vac)
-        {
-			
-				db.Vaccine.Add(vac);
-				try
-				{
-					db.SaveChanges();
-					return true;
-				}
-				catch (DbUpdateConcurrencyException)
-				{
-					((IObjectContextAdapter)db).ObjectContext.Refresh(RefreshMode.ClientWins, db.Vaccine);
-					db.SaveChanges();
-				}
-				return false;
-			
-        }
-
-		public static Vaccine GetVaccine(string id)
-		{
-			
-                var query = from b in db.Vaccine
-                            where b.Id == id
-                            select b;
-				if (query != null && query.Count() > 0)
-				{
-					return query.First();
-				}
-				return null;
-			
-		}
-
-		public static bool AddState(State state)
-		{
-			
-				db.State.Add(state);
-				try
-				{
-					db.SaveChanges();
-					return true;
-				}
-				catch (DbUpdateConcurrencyException)
-				{
-					((IObjectContextAdapter)db).ObjectContext.Refresh(RefreshMode.ClientWins, db.State);
-					db.SaveChanges();
-				}
-				return false;
-			
-		}
-		
-		public static State GetState(string fipsCode)
-		{
-			
-                var query = from b in db.State
-                             where b.FipsCode == fipsCode
-                             select b;
-				if (query != null && query.Count() > 0)
-				{
-					return query.First();
-				}
-				return null;
-			
-		}
-
+        
 		public static void PrintAllImmunizations()
         {
 			//using (var db = new VaccinationContext(new SQLiteConnection("Data Source=D:\\Users\\220038684\\Source\\Repos\\CS6440Project-DEV\\PublicHealthApp\\App_Data\\vaccineDB.sqlite; Version=3")))
